@@ -1,12 +1,46 @@
 export const typedefs = `#graphql
 
-    type Book {
-        title: String
-        author:String
+    type Language {
+
+        id: ID!
+        name: String!
+
     }
 
     type Query{
-    books: [Book]
+        language(id:ID!):Language
+        languages: [Language!]!
     }
 
 `;
+
+// `#graphql
+// type Query {
+//     allCountries: [Country]
+//     country(code: String!): Country
+//     allContinents: [Continent]
+//     continent(name: String!): Continent
+//     allLanguages: [Language]
+//     language(name: String!): Language
+// }
+
+// type Country {
+//     code: String
+//     name: String
+//     capital: String
+//     population: Int
+//     continent: Continent
+//     languages: [Language]
+// }
+
+// type Continent {
+//     code: String
+//     name: String
+//     countries: [Country]
+// }
+
+// type Language {
+//     code: String
+//     name: String
+//     countries: [Country]
+// }`;
