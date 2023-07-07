@@ -1,35 +1,13 @@
 import { ApolloServer } from "@apollo/server";
 import { startStandaloneServer } from "@apollo/server/standalone";
-
-const books = [
-  {
-    title: "The Awakening",
-    author: "Kate Chopin",
-  },
-  {
-    title: "City of Glass",
-    author: "Paul Auster",
-  },
-];
+import { typedefs } from "./schema";
+import { books } from "./db";
 
 const resolvers = {
   Query: {
     books: () => books,
   },
 };
-
-const typedefs = `#graphql
-
-    type Book {
-        title: String
-        author:String
-    }
-
-    type Query{
-    books: [Book]
-    }
-
-`;
 
 const server = new ApolloServer({
   typeDefs: typedefs,
