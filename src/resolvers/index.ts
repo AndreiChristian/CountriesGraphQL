@@ -1,4 +1,4 @@
-import { AppContext } from "..";
+import { AppContext } from "../index";
 
 export const resolvers = {
   Query: {
