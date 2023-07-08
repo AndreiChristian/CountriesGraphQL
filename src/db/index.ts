@@ -6,42 +6,34 @@ interface User {
   nationality: string;
 }
 
-export const users: User[] = [
+export const continents = [
   {
-    id: 1,
-    name: "John Doe",
-    username: "johnDoe123",
-    age: 28,
-    nationality: "American",
+    id: "1",
+    name: "Africa",
   },
   {
-    id: 2,
-    name: "Jane Smith",
-    username: "janeSmith456",
-    age: 32,
-    nationality: "Canadian",
+    id: "2",
+    name: "Antarctica",
   },
   {
-    id: 3,
-    name: "Tom Brown",
-    username: "tomBrown789",
-    age: 35,
-    nationality: "British",
-  },
-  // Add more users as needed
-  {
-    id: 4,
-    name: "Sarah Johnson",
-    username: "sarahJ123",
-    age: 41,
-    nationality: "Australian",
+    id: "3",
+    name: "Asia",
   },
   {
-    id: 5,
-    name: "Mohammed Ali",
-    username: "mohammedA",
-    age: 29,
-    nationality: "Egyptian",
+    id: "4",
+    name: "Europe",
+  },
+  {
+    id: "5",
+    name: "North America",
+  },
+  {
+    id: "6",
+    name: "Oceania",
+  },
+  {
+    id: "7",
+    name: "South America",
   },
 ];
 

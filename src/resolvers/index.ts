@@ -1,9 +1,17 @@
-import { languages } from "../db";
+import { languages, continents } from "../db";
 
 export const resolvers = {
   Query: {
     language: (parent, args, contextValue, info) => {
       return languages.find((l) => (l.id = args.id));
+    },
+
+    continent: (parent, args, contextValue, info) => {
+      return continents.find((c) => (c.id = args.id));
+    },
+
+    continents: () => {
+      return continents;
     },
 
     languages: () => {

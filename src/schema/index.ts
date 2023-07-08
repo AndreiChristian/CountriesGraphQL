@@ -1,5 +1,14 @@
 export const typedefs = `#graphql
 
+    type Query{
+
+        continent(id:ID!):Continent
+        continents: [Continent!]!
+
+        language(id:ID!):Language
+        languages: [Language!]!
+    }
+
     type Language {
 
         id: ID!
@@ -7,9 +16,10 @@ export const typedefs = `#graphql
 
     }
 
-    type Query{
-        language(id:ID!):Language
-        languages: [Language!]!
+    type Continent {
+    id: ID!
+    name: String!
+    # countries: [Country]
     }
 
 `;
@@ -31,12 +41,6 @@ export const typedefs = `#graphql
 //     population: Int
 //     continent: Continent
 //     languages: [Language]
-// }
-
-// type Continent {
-//     code: String
-//     name: String
-//     countries: [Country]
 // }
 
 // type Language {
