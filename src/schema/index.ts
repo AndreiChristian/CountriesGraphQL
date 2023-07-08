@@ -16,7 +16,6 @@ export const typedefs = `#graphql
 
         id: ID!
         name: String!
-        countries:[Country]
 
     }
 
@@ -26,7 +25,6 @@ export const typedefs = `#graphql
         capital: String
         population: Int
         continent: Continent
-        languages: [Language]
     }
 
     type Continent {

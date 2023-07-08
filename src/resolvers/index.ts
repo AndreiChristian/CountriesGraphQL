@@ -38,6 +38,7 @@ export const resolvers = {
           id: args.id,
         },
       });
+      return country;
     },
 
     countries: async (parent, args, contextValue: AppContext, info) => {
@@ -68,25 +69,3 @@ export const resolvers = {
     },
   },
 };
-
-//   Country: {
-//     continent: (parent, args, context, info) => {
-//       return context.db.continents.find(
-//         (continent) => continent.name === parent.continentName
-//       ); // This would be your database query
-//     },
-//     languages: (parent, args, context, info) => {
-//       return parent.languageNames.map((languageName) =>
-//         context.db.languages.find((language) => language.name === languageName)
-//       ); // This would be your database query
-//     },
-//   },
-
-//   Language: {
-//     countries: (parent, args, context, info) => {
-//       return context.db.countries.filter((country) =>
-//         country.languageNames.includes(parent.name)
-//       ); // This would be your database query
-//     },
-//   },
-// };
