@@ -18,11 +18,11 @@ Greetings, Earthling! 👽 Welcome to our intergalactic expedition through the c
 
 Ready for a test-drive through the cosmos? Buckle up and take our live API for a spin at:
 
-[Live API Link](#) 🌌 <-- (Please replace with the actual URL.)
+[Live API Link](https//:server-production-ff85.up.railway.app:4000) 🌌
 
 ## How to Run Locally 🏃‍♀️
 
-1. Clone the repository: `git clone https://https://github.com/AndreiChristian/CountriesGraphQL.git` 📥
+1. Clone the repository: `git clone https://github.com/AndreiChristian/CountriesGraphQL.git` 📥
 2. Navigate into the project directory: `cd yourrepository` 📂
 3. Install the dependencies: `npm install` ⚙️
 4. Start the server: `npm start` 🚀
