@@ -18,12 +18,22 @@ You can test and use the live API at the following URL:
 
 ## How to Run Locally
 
-1. Clone the repository: `git clone https://github.com/yourusername/yourrepository.git`
+1. Clone the repository: `git clone https://https://github.com/AndreiChristian/CountriesGraphQL.git`
 2. Navigate to the project directory: `cd yourrepository`
 3. Install the dependencies: `npm install`
 4. Run the server: `npm start`
 
 After these steps, the GraphQL API will be up and running at `http://localhost:4000`.
+
+> **NOTE: Data Accuracy and Disclaimer**
+>
+> _While every effort is made to ensure that the data provided by this API is accurate and up-to-date, it should be noted that the actual data may vary. This can be due to a variety of reasons, including changes in country demographics, official languages, and continent classification._
+>
+> _The data provided by the API is intended to serve as a general reference and may not be suitable for applications that require precise or real-time data. For the most accurate data, we recommend using an official or government source where possible._
+>
+> _Please use this API at your own discretion, and feel free to contribute if you find any inaccuracies or issues. Contributions to improve the data accuracy are always welcome._
+>
+> **Disclaimer:** _This API, its data, and its maintainers are not responsible for any damages or issues that may arise from the use of the data provided. All data is provided "as is" and without any warranty of any kind._
 
 ## Available Queries
 
@@ -43,3 +53,86 @@ query {
   }
 }
 ```
+
+### Get All Countries
+
+This query retrieves information about all countries stored in the database.
+
+```graphql
+query {
+  countries {
+    id
+    name
+    capital
+    population
+    continent {
+      id
+      name
+    }
+  }
+}
+```
+
+### Get a Single Language
+
+Fetches information about a single language. Replace "your_language_id" with the ID of the language you want to query.
+
+```graphql
+query {
+  language(id: "your_language_id") {
+    id
+    name
+  }
+}
+```
+
+### Get All Languages
+
+This query retrieves information about all languages in the database.
+
+```graphql
+query {
+  languages {
+    id
+    name
+  }
+}
+```
+
+### Get One Continent
+
+Fetches information about a single continent and its related countries. Replace "your_continent_id" with the ID of the continent you want to query.
+
+```graphql
+query {
+  continent(id: "your_continent_id") {
+    id
+    name
+    countries {
+      id
+      name
+    }
+  }
+}
+```
+
+### Get One Continent
+
+This query retrieves information about all continents and their related countries in the database.
+
+```graphql
+query {
+  continents {
+    id
+    name
+    countries {
+      id
+      name
+    }
+  }
+}
+```
+
+### Contributing
+
+Contributions are welcome! Feel free to submit issues and/or pull requests to help improve the project.
