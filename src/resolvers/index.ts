@@ -1,5 +1,4 @@
 import { AppContext } from "..";
-import { languages, continents } from "../db";
 
 export const resolvers = {
   Query: {
