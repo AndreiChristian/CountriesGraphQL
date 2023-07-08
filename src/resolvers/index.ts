@@ -1,50 +1,74 @@
+import { AppContext } from "..";
 import { languages, continents } from "../db";
 
 export const resolvers = {
   Query: {
-    language: (parent, args, contextValue, info) => {
-      return languages.find((l) => (l.id = args.id));
+    languages: async (parent, args, contextValue: AppContext, info) => {
+      const languages = await contextValue.prisma.language.findMany();
+      return languages;
     },
 
-    continent: (parent, args, contextValue, info) => {
-      return continents.find((c) => (c.id = args.id));
+    language: async (parent, args, contextValue: AppContext, info) => {
+      const language = await contextValue.prisma.language.findUnique({
+        where: {
+          id: args.id,
+        },
+      });
+      return language;
     },
 
-    continents: () => {
+    continent: (parent, args, contextValue: AppContext, info) => {
+      const continent = contextValue.prisma.continent.findUnique({
+        where: {
+          id: args.id,
+        },
+      });
+
+      return continent;
+    },
+
+    continents: async (parent, args, contextValue: AppContext, info) => {
+      const continents = await contextValue.prisma.continent.findMany();
       return continents;
     },
 
-    languages: () => {
-      return languages;
+    country: (parent, args, contextValue: AppContext, info) => {
+      const country = contextValue.prisma.country.findUnique({
+        where: {
+          id: args.id,
+        },
+      });
+    },
+
+    countries: async (parent, args, contextValue: AppContext, info) => {
+      const country = await contextValue.prisma.country.findMany();
+      return country;
+    },
+  },
+  Country: {
+    continent: async (parent, args, context: AppContext, info) => {
+      const continent = await context.prisma.continent.findUnique({
+        where: {
+          id: parent.continentId,
+        },
+      });
+
+      return continent;
+    },
+  },
+  Continent: {
+    countries: async (parent, args, context: AppContext, info) => {
+      const countries = await context.prisma.country.findMany({
+        where: {
+          continentId: parent.id,
+        },
+      });
+
+      return countries;
     },
   },
 };
 
-// const resolver = {
-//   Query: {
-//     allCountries: (parent, args, context, info) => {
-//       return context.db.countries; // This would be your database query
-//     },
-//     country: (parent, args, context, info) => {
-//       return context.db.countries.find((country) => country.code === args.code); // This would be your database query
-//     },
-//     allContinents: (parent, args, context, info) => {
-//       return context.db.continents; // This would be your database query
-//     },
-//     continent: (parent, args, context, info) => {
-//       return context.db.continents.find(
-//         (continent) => continent.name === args.name
-//       ); // This would be your database query
-//     },
-//     allLanguages: (parent, args, context, info) => {
-//       return context.db.languages; // This would be your database query
-//     },
-//     language: (parent, args, context, info) => {
-//       return context.db.languages.find(
-//         (language) => language.name === args.name
-//       ); // This would be your database query
-//     },
-//   },
 //   Country: {
 //     continent: (parent, args, context, info) => {
 //       return context.db.continents.find(
@@ -57,13 +81,7 @@ export const resolvers = {
 //       ); // This would be your database query
 //     },
 //   },
-//   Continent: {
-//     countries: (parent, args, context, info) => {
-//       return context.db.countries.filter(
-//         (country) => country.continentName === parent.name
-//       ); // This would be your database query
-//     },
-//   },
+
 //   Language: {
 //     countries: (parent, args, context, info) => {
 //       return context.db.countries.filter((country) =>

@@ -9,3 +9,25 @@ datasource db {
   provider = "sqlite"
   url      = env("DATABASE_URL")
 }
+
+model Country {
+  id        String    @id @default(cuid())
+  name      String
+  capital   String
+  population Int
+  continent Continent @relation(fields: [continentId], references: [id])
+  continentId String
+  languages Language[]
+}
+
+model Continent {
+  id        String     @id @default(cuid())
+  name      String
+  countries Country[]
+}
+
+model Language {
+  id        String     @id @default(cuid())
+  name      String
+  countries Country[]
+}
