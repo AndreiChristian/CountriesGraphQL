@@ -4,10 +4,6 @@ import { typedefs } from "./schema";
 import { resolvers } from "./resolvers";
 import { Prisma, PrismaClient } from "@prisma/client";
 import { DefaultArgs } from "@prisma/client/runtime";
-import {
-  ApolloServerPluginLandingPageLocalDefault,
-  ApolloServerPluginLandingPageProductionDefault,
-} from "@apollo/server/plugin/landingPage/default";
 
 const prisma = new PrismaClient();
 export interface AppContext {
@@ -38,7 +34,7 @@ const startServer = async () => {
 };
 
 startServer()
-  .then((url) => console.log(`🚀  Server ready at: ${url}`))
+  .then((url) => console.log(`🚀  Server ready at port: ${url}`))
   .then(async () => {
     await prisma.$disconnect();
   })
