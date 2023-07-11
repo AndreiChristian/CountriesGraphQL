@@ -22,12 +22,6 @@ export interface AppContext {
 const server = new ApolloServer<AppContext>({
   typeDefs: typedefs,
   resolvers: resolvers,
-  plugins: [
-    ApolloServerPluginLandingPageProductionDefault({
-      graphRef: "my-graph-id@my-graph-variant",
-      footer: false,
-    }),
-  ],
 });
 
 const startServer = async () => {
