@@ -9,8 +9,7 @@
 
 .env
 
-migrations
-dev.db
+
 
 _init.ts
 
